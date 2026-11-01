@@ -54,6 +54,38 @@ a single frame with reflection ghosts); the interactive metrics catch
 things the eye misses (gradual focus drift, a quietly-rising sensor
 temperature). Both views share the same list and the same flag state.</p>
 
+<h2>Ultra Fast Blink Comparator</h2>
+<p>For screening a large night of raw FITS files before stacking, open
+<b>Tools &rarr; Measurement &amp; Inspection &rarr; Ultra Fast Blink Comparator</b>.
+This separate tool measures up to 25 small raw-pixel patches spread across each
+frame. It does not load, debayer, stretch, or retain full images during scoring.
+Uncompressed <code>.fits</code>, <code>.fit</code>, and <code>.fts</code> images
+are supported, including Bayer images. Compressed files and unsupported image
+layouts appear as errors rather than keepers.</p>
+<ol>
+  <li>Add files or a folder (optionally including subfolders), then click
+      <b>Scan / Rescan</b>. Cancel retains completed measurements.</li>
+  <li>Review the score, sampled star count, and coverage. Coverage is the fraction
+      of sampled patches containing stars. The score is
+      <code>100 &times; coverage &times; min(star count / 25, 1)</code>.
+      Scores below 10 are flagged by default. This is a star-evidence screening
+      score, not a stacking weight; sparse or faint star fields may need a lower cutoff.</li>
+  <li>Select a row to load a bounded grayscale preview. Use Previous/Next or
+      Alt+Left/Alt+Right to navigate, and Toggle Flag or Space to override a flag.
+      Cutoff changes preserve manual decisions; Reset Manual Overrides restores
+      automatic decisions. Clear Flags manually keeps every measured frame.
+      Errors and pending files are never included by Select Unflagged.</li>
+  <li>Use <b>Actions</b> for Blink-style rename, move, delete, or document opening.
+      Files change on disk only when you request a file action; deletion requires
+      confirmation and existing destination files are never overwritten.</li>
+  <li>Click <b>Select Unflagged</b>, then Send to Stacking &rarr; Lights or
+      Integration. As in Blink, the send actions use selected rows, or all listed
+      files if nothing is selected. They do not automatically exclude flagged files.</li>
+</ol>
+<p>FWHM, eccentricity, background, and noise are sampled diagnostics. They do not
+automatically flag blur or guiding errors. Use regular Blink for detailed visual
+review, playback, and satellite detection.</p>
+
 <h2>1. Loading images</h2>
 <p>At the top of the left column:</p>
 <ul>

@@ -65,7 +65,7 @@ MENU_CONTENTS: dict[str, List[str]] = {
         "actSyQonTools", "act_remove_stars", "act_rcastro",
     ],
     "tools": [
-        "act_blink", "act_contsub", "act_freqsep", "act_image_combine",
+        "act_blink", "act_ultra_fast_blink", "act_contsub", "act_freqsep", "act_image_combine",
         "act_multiscale_decomp", "act_narrowband_integration",
         "act_narrowband_normalization", "act_nbtorgb", "act_ppp",
         "act_selective_color", "act_selective_lum", "act_slap_toolkit",
@@ -176,7 +176,7 @@ SUBMENUS: dict[str, List[Tuple[str, List[str]]]] = {
             "act_freqsep", "act_multiscale_decomp",
         ]),
         ("Measurement && Inspection", [
-            "act_blink", "act_magnitude", "act_snr",
+            "act_blink", "act_ultra_fast_blink", "act_magnitude", "act_snr",
         ]),
         ("Compositing", [
             "act_image_combine", "act_slap_toolkit",

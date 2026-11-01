@@ -4723,6 +4723,18 @@ class AstroSuiteProMainWindow(
         )
         dlg.show()
 
+    def _open_ultra_fast_blink_tool(self):
+        from setiastro.saspro.ultra_fast_blink import UltraFastBlinkComparator
+
+        dlg = UltraFastBlinkComparator(doc_manager=self.docman, parent=self)
+        dlg.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose, True)
+        dlg.setWindowFlags(Qt.WindowType.Window)
+        dlg.setWindowIcon(QIcon(blink_path))
+        dlg.sendToStacking.connect(
+            lambda paths, target, d=dlg: self._on_blink_send_to_stacking(paths, target, d)
+        )
+        dlg.show()
+
     def _open_narrowband_normalization_tool(self):
         # Correct module import
         from setiastro.saspro.narrowband_normalization import NarrowbandNormalization

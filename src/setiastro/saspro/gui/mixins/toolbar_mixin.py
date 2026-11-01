@@ -277,6 +277,7 @@ class ToolbarMixin:
         self.addToolBar(Qt.ToolBarArea.TopToolBarArea, tb_tl)
 
         tb_tl.addAction(self.act_blink)  # Tools start here; Blink shows with QIcon(blink_path)
+        tb_tl.addAction(self.act_ultra_fast_blink)
         tb_tl.addAction(self.act_ppp)    # Perfect Palette Picker
         tb_tl.addAction(self.act_nbtorgb)
         
@@ -1350,6 +1351,10 @@ class ToolbarMixin:
         self.act_blink.setStatusTip(self.tr("Compare a stack of images by blinking"))
         self.act_blink.triggered.connect(self._open_blink_tool)        
 
+        self.act_ultra_fast_blink = QAction(QIcon(blink_path), self.tr("Ultra Fast Blink Comparator..."), self)
+        self.act_ultra_fast_blink.setStatusTip(self.tr("Screen raw FITS frames using fast sampled star scores"))
+        self.act_ultra_fast_blink.triggered.connect(self._open_ultra_fast_blink_tool)
+
         self.act_ppp = QAction(QIcon(ppp_path), self.tr("Perfect Palette Picker..."), self)
         self.act_ppp.setStatusTip(self.tr("Pick the perfect palette for your image"))
         self.act_ppp.triggered.connect(self._open_ppp_tool) 
@@ -1697,6 +1702,7 @@ class ToolbarMixin:
         reg("satchroma", self.act_satchroma)
         reg("ghs",            self.act_ghs)
         reg("blink",          self.act_blink)
+        reg("ultra_fast_blink", self.act_ultra_fast_blink)
         reg("ppp",            self.act_ppp)
         reg("nbtorgb",       self.act_nbtorgb)
         reg("freqsep",       self.act_freqsep)
